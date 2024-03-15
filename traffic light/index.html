@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="info">
+            <label for="nameInfo">Name : Akshat Bisht</label><br>
+            <label for="idInfo">ID : P/138</label><br>
+            <label for="emailInfo">Email : bishtakshat64@gmail.com</label>
+        </div>
+        <div class="trafficContainer">
+            <div class="circle" id="red"></div>
+            <div class="circle" id="yellow"></div>
+            <div class="circle" id="green"></div>
+
+        </div>
+        <div class="buttons">
+            <button class="button1">RED</button>
+            <button class="button2">YELLOW</button>
+            <button class="button3">GREEN</button>
+            <button class="button4">ALL(BLUE)</button>
+            <button class="button5">ALT</button>
+        </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+            const redButton = document.querySelector('.button1');
+            const yellowButton=document.querySelector('.button2');
+            const greenButton = document.querySelector('.button3');
+            const AllButton=document.querySelector('.button4');
+            const AltButton=document.querySelector('.button5')
+
+            const redCircle = document.getElementById('red');
+            const yellowCircle=document.getElementById('yellow');
+            const greenCircle = document.getElementById('green');
+    
+
+
+           let isFirstCircleRed=false;
+           let isSecondCircleYellow=false;
+           let isThirdCircleGreen=false;
+           let isBlue=false;
+
+           redButton.addEventListener('click',()=>{
+            isFirstCircleRed=true;
+            isSecondCircleYellow=false;
+            isThirdCircleGreen=false;
+            isBlue=false;
+            updateColor();
+           });
+
+           yellowButton.addEventListener('click',()=>{
+            isThirdCircleGreen=false;
+            isFirstCircleRed=false;
+            isSecondCircleYellow=true;
+            isBlue=false;
+
+            updateColor();
+           })
+
+           greenButton.addEventListener('click',()=>{
+            isSecondCircleYellow=false
+            isFirstCircleRed=false
+            isThirdCircleGreen=true
+            isBlue=false;
+
+            updateColor()
+           })
+
+           
+
+           AllButton.addEventListener('click',()=>{
+            isFirstCircleRed=false;
+            isSecondCircleYellow=false;
+            isThirdCircleGreen=false;
+            isBlue=true;
+            updateColor();
+           })
+
+           AltButton.addEventListener('click',()=>{
+            sequence();
+           })
+
+           function sequence() {
+    setTimeout(() => {
+        redCircle.style.backgroundColor = 'red';
+        yellowCircle.style.backgroundColor = '';
+        greenCircle.style.backgroundColor = '';
+    }, 2000);
+    setTimeout(() => {
+        redCircle.style.backgroundColor = '';
+        yellowCircle.style.backgroundColor = 'yellow';
+        greenCircle.style.backgroundColor = '';
+    }, 4000);
+    setTimeout(() => {
+        redCircle.style.backgroundColor = '';
+        yellowCircle.style.backgroundColor = '';
+        greenCircle.style.backgroundColor = 'green';
+    }, 6000);
+    setTimeout(() => {
+        redCircle.style.backgroundColor = '';
+        yellowCircle.style.backgroundColor = '';
+        greenCircle.style.backgroundColor = '';
+        updateColor();
+    }, 8000);
+}
+
+
+
+           function updateColor(){
+            if(isFirstCircleRed){
+                redCircle.style.backgroundColor='red';
+            }
+            else{
+                redCircle.style.backgroundColor='';
+            }
+
+            if(isSecondCircleYellow){
+                yellowCircle.style.backgroundColor='yellow';
+            }
+            else{
+                yellowCircle.style.backgroundColor='';
+            }
+
+            if(isThirdCircleGreen){
+                greenCircle.style.backgroundColor="green";
+            }
+            else{
+                greenCircle.style.backgroundColor='';
+            }
+
+            if(isBlue){
+                redCircle.style.backgroundColor="blue"
+                yellowCircle.style.backgroundColor="blue"
+                greenCircle.style.backgroundColor="blue"
+            }
+         
+           }
+
+        });
+    </script>
+</body>
+</html>
