@@ -23,7 +23,7 @@
             <button class="button1">RED</button>
             <button class="button2">YELLOW</button>
             <button class="button3">GREEN</button>
-            <button class="button4">ALL(BLUE)</button>
+            <button class="button4">ALL</button>
             <button class="button5">ALT</button>
         </div>
     </div>
@@ -39,6 +39,8 @@
             const redCircle = document.getElementById('red');
             const yellowCircle=document.getElementById('yellow');
             const greenCircle = document.getElementById('green');
+           
+        
     
 
 
@@ -48,43 +50,58 @@
            let isBlue=false;
 
            redButton.addEventListener('click',()=>{
+            clear()
             isFirstCircleRed=true;
             isSecondCircleYellow=false;
             isThirdCircleGreen=false;
             isBlue=false;
+          
             updateColor();
+            redButton.style.backgroundColor='red'
+            
            });
+          
 
            yellowButton.addEventListener('click',()=>{
+            clear()
             isThirdCircleGreen=false;
             isFirstCircleRed=false;
             isSecondCircleYellow=true;
             isBlue=false;
-
             updateColor();
+            yellowButton.style.backgroundColor='yellow'
+           
+            
            })
 
            greenButton.addEventListener('click',()=>{
+            clear()
             isSecondCircleYellow=false
             isFirstCircleRed=false
             isThirdCircleGreen=true
             isBlue=false;
-
             updateColor()
+            greenButton.style.backgroundColor='green'
            })
 
            
 
            AllButton.addEventListener('click',()=>{
+            clear()
             isFirstCircleRed=false;
             isSecondCircleYellow=false;
             isThirdCircleGreen=false;
             isBlue=true;
             updateColor();
+            AllButton.style.backgroundColor='blue'
            })
 
            AltButton.addEventListener('click',()=>{
+            clear()
             sequence();
+           
+            AltButton.style.backgroundColor='purple'
+            
            })
 
            function sequence() {
@@ -92,25 +109,34 @@
         redCircle.style.backgroundColor = 'red';
         yellowCircle.style.backgroundColor = '';
         greenCircle.style.backgroundColor = '';
-    }, 2000);
+    }, 0);
     setTimeout(() => {
         redCircle.style.backgroundColor = '';
         yellowCircle.style.backgroundColor = 'yellow';
         greenCircle.style.backgroundColor = '';
-    }, 4000);
+    }, 1000);
     setTimeout(() => {
         redCircle.style.backgroundColor = '';
         yellowCircle.style.backgroundColor = '';
         greenCircle.style.backgroundColor = 'green';
-    }, 6000);
+    }, 2000);
     setTimeout(() => {
         redCircle.style.backgroundColor = '';
         yellowCircle.style.backgroundColor = '';
         greenCircle.style.backgroundColor = '';
         updateColor();
-    }, 8000);
+    }, 3000);
 }
 
+
+            function clear(){
+                redButton.style.backgroundColor="white"
+                yellowButton.style.backgroundColor="white"
+                greenButton.style.backgroundColor="white"
+                AllButton.style.backgroundColor='white'
+                AltButton.style.backgroundColor="white"
+
+            }
 
 
            function updateColor(){
@@ -136,9 +162,9 @@
             }
 
             if(isBlue){
-                redCircle.style.backgroundColor="blue"
-                yellowCircle.style.backgroundColor="blue"
-                greenCircle.style.backgroundColor="blue"
+                redCircle.style.backgroundColor="red"
+                yellowCircle.style.backgroundColor="yellow"
+                greenCircle.style.backgroundColor="green"
             }
          
            }
